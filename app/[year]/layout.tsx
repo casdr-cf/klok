@@ -13,7 +13,11 @@ export default function CalendarLayout({
 
   return (
     <main>
-      <Year year={year} />
+      <div className="h-screen flex justify-center items-center">
+        <div className="w-[100vmin] aspect-square">
+          <Year year={year} />
+        </div>
+      </div>
     </main>
   );
 }

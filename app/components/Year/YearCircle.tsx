@@ -8,6 +8,8 @@ function getViewBox(year: string, month?: string) {
   const standardViewBox = "0 0 100 100";
 
   if (!month) return standardViewBox;
+
+  return "42 -14 40 40";
 }
 
 interface Props {
@@ -20,11 +22,7 @@ export default function YearCircle({ months }: Props) {
   const viewBox = getViewBox(year, month);
 
   return (
-    <svg
-      viewBox={viewBox}
-      xmlns="http://www.w3.org/2000/svg"
-      className="mx-auto aspect-square h-screen"
-    >
+    <svg viewBox={viewBox} xmlns="http://www.w3.org/2000/svg" className="m-4">
       <g transform="translate(50, 50)">
         {[...months.entries()].map(([index, month]) => (
           <Month key={index} path={month.path} index={index} />

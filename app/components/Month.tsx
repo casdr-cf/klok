@@ -16,7 +16,7 @@ export default function Month({ path, index }: Props) {
     <path
       d={path}
       strokeWidth={0.1}
-      className="stroke fill-white stroke-black"
+      className="fill-red-300"
       onClick={() => {
         router.push(`/${year}/${index + 1}`);
       }}
