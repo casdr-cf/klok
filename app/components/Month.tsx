@@ -1,7 +1,7 @@
 "use client";
 
 import { IMonth } from "@/app/types";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 interface Props extends Pick<IMonth, "path"> {
   index: number;
@@ -9,9 +9,8 @@ interface Props extends Pick<IMonth, "path"> {
 
 export default function Month({ path, index }: Props) {
   const router = useRouter();
-  const pathname = usePathname();
 
-  const yearPath = pathname.split("/")[1];
+  const { year } = useParams();
 
   return (
     <path
@@ -19,7 +18,7 @@ export default function Month({ path, index }: Props) {
       strokeWidth={0.1}
       className="stroke fill-white stroke-black"
       onClick={() => {
-        router.push(`/${yearPath}/${index + 1}`);
+        router.push(`/${year}/${index + 1}`);
       }}
     />
   );

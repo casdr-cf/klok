@@ -1,6 +1,5 @@
 import { isExists } from "date-fns";
-import { ReactNode } from "react";
-import Year from "../components/Year";
+import Year from "@/app/components/Year";
 
 export default function CalendarLayout({
   params,

@@ -46,8 +46,10 @@ function monthPath({
   return path;
 }
 
+export type MonthsMap = Map<number, IMonth>;
+
 export function getMonthsOfYear(year: number) {
-  const months = new Map<number, IMonth>();
+  const months: MonthsMap = new Map();
   const numOfMonths = 12;
 
   for (let i = 0; i < numOfMonths; i++) {
