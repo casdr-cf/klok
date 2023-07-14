@@ -11,8 +11,8 @@ import { IMonth } from "@/app/types";
 function getMonthAngles(year: number, startDay: number, endDay: number) {
   const daysInYear = getDaysInYear(new Date(year));
 
-  const startAngle = (TWO_PI / daysInYear) * startDay - Math.PI / 2;
-  const endAngle = (TWO_PI / daysInYear) * endDay - Math.PI / 2;
+  const startAngle = (TWO_PI / daysInYear) * startDay;
+  const endAngle = (TWO_PI / daysInYear) * endDay;
 
   return { startAngle, endAngle };
 }

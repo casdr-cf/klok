@@ -16,7 +16,7 @@ export default function Year({ year }: Props) {
     >
       <g transform="translate(50, 50)">
         {[...months.entries()].map(([index, month]) => (
-          <Month key={index} path={month.path} />
+          <Month key={index} path={month.path} index={index} />
         ))}
       </g>
     </svg>
