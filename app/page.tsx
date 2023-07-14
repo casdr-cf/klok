@@ -1,7 +1,12 @@
+import { getYear } from "date-fns";
+import Year from "./components/Year";
+
+const currentYear = getYear(new Date());
+
 export default function Home() {
   return (
     <main>
-      <h1 className="text-fg">This is a test</h1>
+      <Year year={currentYear} />
     </main>
   );
 }

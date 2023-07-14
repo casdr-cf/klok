@@ -6,11 +6,12 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      "klok-fg": "hsl(205 100% 9%)",
-      "klok-bg": "hsl(0 0% 96%)",
+    extend: {
+      colors: {
+        "klok-fg": "hsl(205 100% 9%)",
+        "klok-bg": "hsl(0 0% 96%)",
+      },
     },
-    extend: {},
   },
   plugins: [],
 };
