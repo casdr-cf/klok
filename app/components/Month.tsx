@@ -14,8 +14,8 @@ export default function Month({ path, index }: Props) {
 
   return (
     <path
+      id={`month-${index}`}
       d={path}
-      strokeWidth={0.1}
       className="fill-red-300"
       onClick={() => {
         router.push(`/${year}/${index + 1}`);
