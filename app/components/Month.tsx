@@ -14,7 +14,7 @@ export default function Month({ path, index }: Props) {
 
   return (
     <path
-      id={`month-${index}`}
+      data-month-id={index + 1}
       d={path}
       className="fill-red-300"
       onClick={() => {
