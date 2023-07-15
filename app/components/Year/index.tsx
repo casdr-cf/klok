@@ -5,6 +5,7 @@ import { getMonthsOfYear } from "./utils";
 import { useParams, useRouter } from "next/navigation";
 import { WindowSize, useWindowSize } from "@/app/hooks/useWindowSize";
 import { useEffect, useState, MouseEvent } from "react";
+import { motion } from "framer-motion";
 
 function getViewBox(windowSize: WindowSize, month: number | null = null) {
   const { width, height } = windowSize;
@@ -25,7 +26,7 @@ function getViewBox(windowSize: WindowSize, month: number | null = null) {
     height: monthHeight,
   } = monthElement.getBBox();
 
-  const PADDING = 20;
+  const PADDING = 50;
 
   return `${x - PADDING / 2} ${y - PADDING / 2} ${monthWidth + PADDING} ${
     monthHeight + PADDING
@@ -59,17 +60,18 @@ export default function Year() {
   }
 
   return (
-    <svg
-      viewBox={viewBox}
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
       className="w-full h-screen"
       onClick={(event) => handleClick(event)}
+      animate={{ viewBox }}
+      transition={{ duration: 0.4, ease: [0.43, 0.15, 0.26, 0.97] }}
     >
       <g transform="translate(0, 0)">
         {[...months.entries()].map(([index, month]) => (
           <Month key={index} path={month.path} index={index} />
         ))}
       </g>
-    </svg>
+    </motion.svg>
   );
 }
