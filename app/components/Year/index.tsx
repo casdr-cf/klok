@@ -1,37 +1,11 @@
 "use client";
 
 import Month from "@/app/components/Month";
-import { getMonthsOfYear } from "./utils";
+import { getMonthsOfYear, getViewBox } from "./utils";
 import { useParams, useRouter } from "next/navigation";
-import { WindowSize, useWindowSize } from "@/app/hooks/useWindowSize";
+import { useWindowSize } from "@/app/hooks/useWindowSize";
 import { useEffect, useState, MouseEvent } from "react";
 import { motion } from "framer-motion";
-
-function getViewBox(windowSize: WindowSize, month: number | null = null) {
-  const { width, height } = windowSize;
-
-  const yearViewBox = `${-width / 2} ${-height / 2} ${width} ${height}`;
-
-  if (!month) return yearViewBox;
-
-  const monthElement = document.querySelector(
-    `[data-month-id="${month}"]`,
-  ) as SVGPathElement | null;
-  if (!monthElement) return yearViewBox;
-
-  const {
-    x,
-    y,
-    width: monthWidth,
-    height: monthHeight,
-  } = monthElement.getBBox();
-
-  const PADDING = 50;
-
-  return `${x - PADDING / 2} ${y - PADDING / 2} ${monthWidth + PADDING} ${
-    monthHeight + PADDING
-  }`;
-}
 
 function useViewBox(month: number | null = null) {
   const windowSize = useWindowSize();
@@ -62,7 +36,7 @@ export default function Year() {
   return (
     <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-screen"
+      className="h-screen w-full"
       onClick={(event) => handleClick(event)}
       animate={{ viewBox }}
       transition={{ duration: 0.4, ease: [0.43, 0.15, 0.26, 0.97] }}

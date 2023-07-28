@@ -41,9 +41,7 @@ function monthPath({
     .innerRadius(innerRadius)
     .outerRadius(outerRadius)
     .startAngle(startAngle)
-    .endAngle(endAngle)
-    .padAngle(0.01)
-    .cornerRadius(3)()!;
+    .endAngle(endAngle)()!;
 
   return path;
 }
@@ -71,4 +69,33 @@ export function getMonthsOfYear(year: number, windowSize: WindowSize) {
   }
 
   return months;
+}
+
+export function getViewBox(
+  windowSize: WindowSize,
+  month: number | null = null,
+) {
+  const { width, height } = windowSize;
+
+  const yearViewBox = `${-width / 2} ${-height / 2} ${width} ${height}`;
+
+  if (!month) return yearViewBox;
+
+  const monthElement = document.querySelector(
+    `[data-month-id="${month}"]`,
+  ) as SVGPathElement | null;
+  if (!monthElement) return yearViewBox;
+
+  const {
+    x,
+    y,
+    width: monthWidth,
+    height: monthHeight,
+  } = monthElement.getBBox();
+
+  const PADDING = 50;
+
+  return `${x - PADDING / 2} ${y - PADDING / 2} ${monthWidth + PADDING} ${
+    monthHeight + PADDING
+  }`;
 }
